@@ -24,11 +24,11 @@ Create the action for fetching images URLs.
 
 ```js
 // fetchImagesUrls.js
-import { createFetchImagesUrls } from 'redux-images';
+import { createFetchImagesUrlsAction } from 'redux-images';
 
 const timeToLive = 900000; // In millis, optional, default to 15 minutes
 
-export default createFetchImagesUrls(
+export default createFetchImagesUrlsAction(
   async (keys) => {
     // For the given keys, fetch images URLs from your backend system
     // Return an array of strings, in the same order as for the given keys
