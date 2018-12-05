@@ -67,8 +67,8 @@ const Post = ({ avatar, cover, ...post }) => (
 );
 
 const mapStateToProps = ({ imagesUrls }) => ({
-  avatar: imagesUrls['avatar-f7e98644-42f3-4439-b881-bc70a98019ed-200x200'],
-  cover: imagesUrls['post-cover-6900f761-ecb1-4892-b926-1336c836e1fb-400x400'],
+  avatar: imagesUrls['avatar-f7e98644-42f3-4439-b881-bc70a98019ed-200x200'].url,
+  cover: imagesUrls['post-cover-6900f761-ecb1-4892-b926-1336c836e1fb-400x400'].url,
 });
 
 export default connect(mapStateToProps)(Post);
