@@ -1,0 +1,41 @@
+{
+  "name": "redux-images",
+  "version": "0.0.1",
+  "description": "Redux components for fetching and preloading images",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "test": "jest",
+    "build": "babel src --out-dir lib --source-maps inline --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EgidioCaprino/redux-images.git"
+  },
+  "keywords": [
+    "redux",
+    "image"
+  ],
+  "author": "Egidio Caprino <egidio.caprino@gmail.com> (https://github.com/EgidioCaprino)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EgidioCaprino/redux-images/issues"
+  },
+  "homepage": "https://github.com/EgidioCaprino/redux-images#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.9.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.13.1"
+  }
+}
