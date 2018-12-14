@@ -1,27 +1,34 @@
+import fetchMissingImagesUrls from './fetchMissingImagesUrls';
 import receiveImagesUrls from './receiveImagesUrls';
 
-export default (fetchImagesUrls, timeToLive = 900000) => {
-  return keys => async (dispatch, getState) => {
-    const { imagesUrls } = getState();
+const defaultOptions = {
+  timeToLive: 900000,
+  debounceTime: 100,
+};
 
-    const keysToFetch = keys.filter((key) => {
-      const image = imagesUrls[key];
-      return !image || Date.now() >= image.expiryDate;
-    });
+export default (fetchImagesUrls, options = defaultOptions) => {
+  let keysToFetch = [];
+  let timeout = null;
 
-    const rawUrls = await fetchImagesUrls(keysToFetch);
+  return keys => (dispatch, getState) => {
+    keysToFetch = [...keysToFetch, ...keys];
 
-    const urls = rawUrls.reduce(
-      (accumulator, url, index) => ({
-        ...accumulator,
-        [keysToFetch[index]]: {
-          url,
-          expiryDate: Date.now() + timeToLive,
-        },
-      }),
-      {},
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(
+      async () => {
+        const { imagesUrls } = getState();
+        const urls = await fetchMissingImagesUrls(
+          keysToFetch, 
+          imagesUrls, 
+          fetchImagesUrls, 
+          options.timeToLive,
+        );
+        dispatch(receiveImagesUrls(urls));
+      },
+      options.debounceTime,
     );
-
-    dispatch(receiveImagesUrls(urls));
   };
 };
