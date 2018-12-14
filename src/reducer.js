@@ -1,6 +1,8 @@
 import { RECEIVE_IMAGES_URLS } from './receiveImagesUrls';
 
-export default (state, action) => {
+const initialState = {};
+
+export default (state = initialState, action) => {
   if (action && action.type === RECEIVE_IMAGES_URLS) {
     return {
       ...state,
